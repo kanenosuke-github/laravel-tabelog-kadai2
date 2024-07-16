@@ -26,9 +26,10 @@ use App\Http\Controllers\ReviewController;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/detail/{id}', [App\Http\Controllers\HomeController::class, 'detail'])->name('home.detail');
-Route::post('/store/{id}/review', [ReviewController::class, 'store'])->name('home.review');
 
-
+// レビュー投稿フォーム表示とレビュー保存のルート設定
+Route::get('/store/{id}/review', [ReviewController::class, 'create'])->name('home.review.create');
+Route::post('/store/{id}/review', [ReviewController::class, 'store'])->name('home.review.store');
 
 
 // 認証ルート

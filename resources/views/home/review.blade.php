@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>レビュー</h1>
-    <form action="{{route('home.review',['id' => $store->id])}}" method="POST">
+    <form action="{{route('home.review.store',['id' => $store->id])}}" method="POST">
     @csrf
     <input type="text" name="user_name" placeholder="お名前" required>
     <textarea name="comment" id="comment" placeholider="レビュー内容" required></textarea>

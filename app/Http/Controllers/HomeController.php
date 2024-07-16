@@ -17,6 +17,6 @@ class HomeController extends Controller
     {
         $store = Store::findOrFail($id);
         $reviews = Review::where('store_id',$id)->get();
-        return view('home.detail',compact('store'));
+        return view('home.detail',compact('store','reviews'));
     }
 }

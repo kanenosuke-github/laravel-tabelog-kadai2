@@ -22,6 +22,15 @@ class ReviewController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+     // 投稿フォームを表示するためのメソッド
+    public function create($id)
+    {
+        $store = Store::findOrFail($id);
+        return view('home.review', compact('store'));
+    }
+
+    // レビューを保存するためのメソッド
     public function store(Request $request, $storeId)
     {
         $request->validate([

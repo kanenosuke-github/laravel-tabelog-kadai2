@@ -8,7 +8,7 @@
 <body>
     <a href="{{route('home')}}">ホーム</a>
     <a href="{{--route('#')--}}">予約</a>
-    <a href="{{route('home.review',['id' => $store->id])}}">レビュー投稿</a>
+    <a href="{{route('home.review.create',['id' => $store->id])}}">レビュー投稿</a>
     <h1>店舗詳細</h1>
     {{$store->name}}
     <a href="{{--route('#')--}}">お気に入り</a>
@@ -48,9 +48,11 @@
             <p><strong>{{$review->user_name}}</strong></p>
             <p>{{$review->comment}}</p>
         </li>
-        @empty
-        <li>レビューがありません。</li>
         @endforeach
+
+        @if($reviews->isEmpty())
+        <li>レビューがありません。</li>
+        @endif
     </ul>
 
 </body>
