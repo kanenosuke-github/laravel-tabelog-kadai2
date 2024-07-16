@@ -8,11 +8,15 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * @void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('store_id')->constrained()->onDelete('cascade'); //店舗ID
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); //会員ID
+            $table->dateTime('reservation_date');
             $table->timestamps();
         });
     }
