@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Store;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,9 +13,10 @@ class HomeController extends Controller
         return view('home.index',compact('stores'));
     }
 
-    public function detail(Request $request)
+    public function detail($id)
     {
-        $store = Store::find($request->id);
+        $store = Store::findOrFail($id);
+        $reviews = Review::where('store_id',$id)->get();
         return view('home.detail',compact('store'));
     }
 }

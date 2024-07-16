@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\TermsController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ use App\Http\Controllers\Admin\TermsController;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/detail/{id}', [App\Http\Controllers\HomeController::class, 'detail'])->name('home.detail');
+Route::post('/store/{id}/review', [ReviewController::class, 'store'])->name('home.review');
 
 
 

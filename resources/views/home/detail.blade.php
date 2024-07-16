@@ -8,7 +8,7 @@
 <body>
     <a href="{{route('home')}}">ホーム</a>
     <a href="{{--route('#')--}}">予約</a>
-    <a href="{{--route('#')--}}">レビュー</a>
+    <a href="{{route('home.review',['id' => $store->id])}}">レビュー投稿</a>
     <h1>店舗詳細</h1>
     {{$store->name}}
     <a href="{{--route('#')--}}">お気に入り</a>
@@ -26,7 +26,7 @@
         <th>Regular Holiday</th>
     </tr>
     <tr>
-        <td>{{$store->image}}</td>
+        <td><img src="{{$store->image}}" alt="{{$store->name}}"></td>
         <td>{{$store->description}}</td>
         <td>{{$store->business_hours}}</td>
         <td>{{$store->price}}</td>
@@ -40,6 +40,18 @@
     </table>
 
     <!--店舗詳細の下にレビューを入れる-->
+
+    <h2>レビュー一覧</h2>
+    <ul>
+        @foreach($reviews as $review)
+        <li>
+            <p><strong>{{$review->user_name}}</strong></p>
+            <p>{{$review->comment}}</p>
+        </li>
+        @empty
+        <li>レビューがありません。</li>
+        @endforeach
+    </ul>
 
 </body>
 </html>
