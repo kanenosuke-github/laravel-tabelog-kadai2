@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\TermsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,3 +64,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
     Route::get('terms', [TermsController::class, 'index'])->name('terms');
 });
 
+//予約
+Route::middleware(['auth'])->group(function(){
+    Route::get('/reservations', [ReservationController::class,'index'])->name('user.reservations.index');
+    Route::get('/stores/{store}/reservations/create', [ReservationController::class,'create'])->name('user.reservations.create');
+    Route::post('/stores/{store}/reservations', [ReservationController::class,'store'])->name('user.reservations.store');
+    Route::delete('/reservations/{reservation}', [ReservationController::class,'destroy'])->name('user.reservations.destroy');
+});

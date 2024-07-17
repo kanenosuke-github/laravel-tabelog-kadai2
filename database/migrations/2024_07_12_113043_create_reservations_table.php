@@ -16,15 +16,16 @@ return new class extends Migration
             $table->id();
             $table->foreignId('store_id')->constrained()->onDelete('cascade'); //店舗ID
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); //会員ID
-            $table->dateTime('reservation_date');
+            $table->dateTime('reservation_date');//予約日時
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *@return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('reservations');
     }

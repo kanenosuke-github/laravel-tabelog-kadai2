@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review</title>
-</head>
+@extends('layouts.app')
+
+@section('content')
 <body>
     <h1>レビュー</h1>
     <form action="{{route('home.review.store',['id' => $store->id])}}" method="POST">
@@ -15,4 +11,4 @@
     </form>
 
 </body>
-</html>
+@endsection
