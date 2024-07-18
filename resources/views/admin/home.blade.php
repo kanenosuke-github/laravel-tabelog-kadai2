@@ -63,7 +63,3 @@
 @endsection
 
 <body>
-<form action="{{ route('admin.logout') }}" method="post">
-    @csrf
-    <input type="submit" value="ログアウト">
-</form>

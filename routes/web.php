@@ -60,8 +60,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
     Route::get('members', [MemberController::class, 'index'])->name('members');
     Route::resource('stores', StoreController::class);
     Route::get('category', [CategoryController::class, 'index'])->name('category.index');
-    Route::get('about', [AboutController::class, 'index'])->name('about');
-    Route::get('terms', [TermsController::class, 'index'])->name('terms');
 });
 
 //予約
@@ -71,3 +69,13 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/stores/{store}/reservations', [ReservationController::class,'store'])->name('user.reservations.store');
     Route::delete('/reservations/{reservation}', [ReservationController::class,'destroy'])->name('user.reservations.destroy');
 });
+
+// routes/web.php
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+// routes/web.php
+Route::get('/terms', function () {
+    return view('terms'); // 場合によっては別のビュー名になるかもしれません
+})->name('terms');
