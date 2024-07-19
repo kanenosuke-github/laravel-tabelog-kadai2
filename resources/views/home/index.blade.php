@@ -23,7 +23,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><a href="{{route('home.detail',$store->id)}}">店舗詳細</td>
+            <td><a href="{{route('home.detail',$store->id)}}">店舗詳細</a></td>
         </tr>
     </table>
     

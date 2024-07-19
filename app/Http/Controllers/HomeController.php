@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Store;
 use App\Models\Review;
+use App\Models\Reservation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

@@ -14,7 +14,6 @@ class ReservationController extends Controller
     {
         return view('user.reservations.create',compact('store'));
     }
-
     public function store(Request $request, Store $store)
     {
         $request->validate([
@@ -35,4 +34,6 @@ class ReservationController extends Controller
         $reservations = Reservation::where('user_id',Auth::id())->get();
         return view('user.reservations.index',compact('reservations'));
     }
+    
+    
 }

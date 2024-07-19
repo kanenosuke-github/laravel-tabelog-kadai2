@@ -3,7 +3,7 @@
 @section('content')
 <body>
     <a href="{{route('home')}}">ホーム</a>
-    <a href="{{--route('#')--}}">予約</a>
+    <a href="{{route('user.reservations.create',['store' => $store->id])}}">予約</a>
     <a href="{{route('home.review.create',['id' => $store->id])}}">レビュー投稿</a>
     <h1>店舗詳細</h1>
     {{$store->name}}

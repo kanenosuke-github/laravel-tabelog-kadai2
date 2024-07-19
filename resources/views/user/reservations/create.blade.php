@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>{{$store->name}}の予約</h1>
-    <form action="{{foute('user.reservations.store',$store)}}" method="POST">
+    <form action="{{route('user.reservations.store',$store)}}" method="POST">
     @csrf
     <div class="form-group">
         <label for="reservation_date">予約日時</label>
