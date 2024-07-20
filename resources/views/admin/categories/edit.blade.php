@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <div>
     <h2>Edit Category</h2>
 </div>
@@ -5,7 +8,7 @@
     <a href="{{route('admin.categories.index')}}">Back</a>
 </div>
 
-<form action="{{route('admin.categories.update',$store->id)}}" method="POST">
+<form action="{{route('admin.categories.update',$category->id)}}" method="POST">
     @csrf
     @method('PUT')
 
@@ -18,4 +21,10 @@
         <button type="submit">Submit</button>
     </div>
 
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+
 </form>
+
+@endsection

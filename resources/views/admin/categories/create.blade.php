@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <div>
     <h2>Add New Category</h2>
 </div>
@@ -20,9 +23,10 @@
 
     <div>
         <strong>New Category:</strong>
-        <input type="text" name="category" placeholder="Category">
+        <input type="text" name="name" placeholder="Category">
     </div>
     <div>
         <button type="submit">Submit</button>
     </div>
 </form>
+@endsection

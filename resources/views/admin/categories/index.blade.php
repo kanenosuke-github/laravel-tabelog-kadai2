@@ -10,33 +10,14 @@
 <table>
     <tr>
         <th>Name</th>
-        <th>Image</th>
-        <th>Description</th>
-        <th>Business Hours</th>
-        <th>Price</th>
-        <th>Category ID</th>
-        <th>Postal Code</th>
-        <th>Address</th>
-        <th>Phone Number</th>
-        <th>Regular Holiday</th>
-        <th>Action</th>
     </tr>
-    @foreach ($stores as $store)
+    @foreach ($categories as $category)
     <tr>
-        <td>{{$store->name}}</td>
-        <td>{{$store->image}}</td>
-        <td>{{$store->description}}</td>
-        <td>{{$store->business_hours}}</td>
-        <td>{{$store->price}}</td>
-        <td>{{$store->category_id}}</td>
-        <td>{{$store->postal_code}}</td>
-        <td>{{$store->address}}</td>
-        <td>{{$store->phone_number}}</td>
-        <td>{{$store->regular_holiday}}</td>
+        <td>{{$category->name}}</td>
         <td>
-            <form action="{{route('admin.stores.destroy',$store->id)}}" method="POST">
-               <a href="{{route('admin.stores.show',$store->id)}}">Show</a>
-               <a href="{{route('admin.stores.edit',$store->id)}}">Edit</a>
+            <form action="{{route('admin.categories.destroy',$category->id)}}" method="POST">
+               <a href="{{route('admin.categories.show',$category->id)}}">Show</a>
+               <a href="{{route('admin.categories.edit',$category->id)}}">Edit</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit">DELETE</button>

@@ -69,7 +69,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('members', [MemberController::class, 'index'])->name('members');
     Route::resource('stores', StoreController::class);
-    Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+    Route::resource('categories', CategoryController::class); // 新しいリソースルート
 });
 
 
