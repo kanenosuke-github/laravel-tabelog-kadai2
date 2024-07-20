@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <a href="{{route('admin.stores.create')}}">Create New Store</a>
 
 <table>
@@ -38,3 +42,5 @@
     </tr>
     @endforeach
 </table>
+
+@endsection

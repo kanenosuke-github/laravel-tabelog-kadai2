@@ -18,12 +18,14 @@ class ReservationController extends Controller
     {
         $request->validate([
             'reservation_date' => 'required|date|after:today',
+            'number_of_people' => 'required',
         ]);
 
         Reservation::create([
             'store_id' =>$store->id,
             'user_id' => Auth::id(),
             'reservation_date' =>$request->input('reservation_date'),
+            'number_of_people' =>$request->input('number_of_people'),
         ]);
 
         return redirect()->route('user.reservations.index')->with('success','予約が完了しました。');

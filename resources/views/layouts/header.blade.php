@@ -30,8 +30,6 @@
                             <a class="dropdown-item" href="{{--route('admin.users.index') --}}">会員一覧</a>
                             <a class="dropdown-item" href="{{ route('admin.stores.index') }}">店舗一覧</a>
                             <a class="dropdown-item" href="{{ route('admin.category.index') }}">カテゴリ一覧</a>
-                            <a class="dropdown-item" href="{{ route('admin.about') }}">会社概要</a>
-                            <a class="dropdown-item" href="{{ route('admin.terms') }}">利用規約</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('admin.logout') }}"
                             onclick="event.preventDefault();
@@ -64,10 +62,10 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('user.index') }}">会員情報</a>
+                                <a class="dropdown-item" href="{{-- route('user.index') --}}">会員情報</a>
 
                                 @if (Auth::user()->subscribed('premium_plan'))
-                                    <a class="dropdown-item" href="#">予約一覧</a>
+                                    <a class="dropdown-item" href="{{route('user.reservations.index')}}">予約一覧</a>
                                     <a class="dropdown-item" href="#">お気に入り一覧</a>
                                     <a class="dropdown-item" href="{{ route('subscription.edit') }}">お支払い方法</a>
                                     <a class="dropdown-item" href="{{ route('subscription.cancel') }}">有料プラン解約</a>
