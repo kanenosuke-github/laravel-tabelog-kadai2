@@ -36,6 +36,20 @@ class ReservationController extends Controller
         $reservations = Reservation::where('user_id',Auth::id())->get();
         return view('user.reservations.index',compact('reservations'));
     }
+
+    public function destroy(Reservation $reservation)
+{
+    // ユーザーがこの予約を作成した本人であることを確認します。
+    if ($reservation->user_id != Auth::id()) {
+        return redirect()->route('user.reservations.index')->with('error', '不正な操作です。');
+    }
+
+    // 予約を削除します。
+    $reservation->delete();
+
+    return redirect()->route('user.reservations.index')->with('success', '予約がキャンセルされました。');
+}
+
     
     
 }

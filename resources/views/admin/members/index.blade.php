@@ -4,26 +4,31 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col">
-                <h1>会員一覧</h1>
+                <h1>会員一覧検索/一覧</h1>
+
+                <form action="{{ route('admin.members.index') }}" method="GET">
+                    <input type="text" name="search" placeholder="Search members..." value="{{ request('search') }}">
+                    <button type="submit">Search</button>
+                </form>
+
                 <table>
-    <tr>
-        <th>Name</th>
-    </tr>
-    @foreach ($categories as $category)
-    <tr>
-        <td>{{$category->name}}</td>
-        <td>
-            <form action="{{route('admin.categories.destroy',$category->id)}}" method="POST">
-               <a href="{{route('admin.categories.show',$category->id)}}">Show</a>
-               <a href="{{route('admin.categories.edit',$category->id)}}">Edit</a>
-                @csrf
-                @method('DELETE')
-                <button type="submit">DELETE</button>
-            </form>
-        </td>
-    </tr>
-    @endforeach
-</table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                    @foreach ($members as $member)
+                    <tr>
+                        <td>{{ $member->name }}</td>
+                        <td>{{ $member->email }}</td>
+                        <td>
+                            <a href="{{ route('admin.members.show', $member->id) }}">Show</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
+
+                {{ $members->links() }}
             </div>
         </div>
     </div>

@@ -27,8 +27,8 @@
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('admin.home') }}">ホーム</a>
-                            <a class="dropdown-item" href="{{--route('admin.users.index') --}}">会員一覧</a>
-                            <a class="dropdown-item" href="{{ route('admin.stores.index') }}">店舗一覧</a>
+                            <a class="dropdown-item" href="{{route('admin.members.index')}}">会員一覧</a>
+                            <a class="dropdown-item" href="{{ route('admin.stores.index')}}">店舗一覧</a>
                             <a class="dropdown-item" href="{{ route('admin.categories.index') }}">カテゴリ一覧</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('admin.logout') }}"

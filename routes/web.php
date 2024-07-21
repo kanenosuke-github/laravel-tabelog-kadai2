@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\TermsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,12 +68,17 @@ require __DIR__.'/auth.php';
 // 管理画面のルートグループ
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin'], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('members', [MemberController::class, 'index'])->name('members');
+    Route::get('members', [MemberController::class, 'index'])->name('members.index');
+    Route::get('members/{member}', [MemberController::class, 'show'])->name('members.show');
     Route::resource('stores', StoreController::class);
     Route::resource('categories', CategoryController::class); // 新しいリソースルート
 });
 
-
+Route::middleware(['auth'])->group(function () {
+    Route::post('favorites/{store}', [FavoriteController::class, 'store'])->name('favorites.store');
+    Route::delete('favorites/{store}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+    Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+});
 
 
 // routes/web.php
