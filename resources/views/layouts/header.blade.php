@@ -62,11 +62,11 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{-- route('user.index') --}}">会員情報</a>
+                                <a class="dropdown-item" href="{{route('user.show')}}">会員情報</a>
 
                                 @if (Auth::user()->subscribed('premium_plan'))
                                     <a class="dropdown-item" href="{{route('user.reservations.index')}}">予約一覧</a>
-                                    <a class="dropdown-item" href="#">お気に入り一覧</a>
+                                    <a class="dropdown-item" href="{{route('user.favorites')}}">お気に入り一覧</a>
                                     <a class="dropdown-item" href="{{ route('subscription.edit') }}">お支払い方法</a>
                                     <a class="dropdown-item" href="{{ route('subscription.cancel') }}">有料プラン解約</a>
                                 @else

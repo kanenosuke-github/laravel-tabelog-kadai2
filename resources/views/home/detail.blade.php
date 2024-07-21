@@ -7,21 +7,26 @@
     <a href="{{route('home.review.create',['id' => $store->id])}}">レビュー投稿</a>
     <h1>店舗詳細</h1>
     {{$store->name}}
-    <a href="{{route('user.favorites.index')}}">お気に入り</a>
+    <img src="{{asset('images/stores/'.$store->image)}}" alt="" width="100px">
+    
+    <a href="{{route('favorites.index')}}">お気に入り</a>
 
-    @if(Auth::user()->favorite_stores->contains($store->id))
-        <form action="{{ route('favorites.destroy', $store->id) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit">お気に入り解除</button>
-        </form>
+    @guest
+    
     @else
-        <form action="{{ route('favorites.store', $store->id) }}" method="POST">
-            @csrf
-            <button type="submit">お気に入り</button>
-        </form>
-    @endif
-
+        @if(Auth::user()->favorite_stores()->where('store_id',$store->id)->exists())
+            <form action="{{ route('favorites.destroy', $store->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit">お気に入り解除</button>
+            </form>
+        @else
+            <form action="{{ route('favorites.store', $store->id) }}" method="POST">
+                @csrf
+                <button type="submit">お気に入り</button>
+            </form>
+        @endif
+    @endguest
     <table>
     <tr>
         <th>Image</th>

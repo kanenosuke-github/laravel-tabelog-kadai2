@@ -49,8 +49,11 @@ class StoreController extends Controller
         $store = new Store();
         $store->name = $request->input('name');
         if($request->hasFile('image')){
-            $image = $request->file('image')->store('public/stores');
-            $store->image = basename($image);
+            //$image = $request->file('image')->store('public/stores');
+            //$store->image = basename($image);
+            $imageName = time().'.'.$request->image->extension();
+            $image = $request->file('image')->move(public_path('images/stores'), $imageName);
+            $store->image = $imageName;
         }else{
             $store->image = "";
         }
@@ -106,8 +109,11 @@ class StoreController extends Controller
         //dd($request);
         $store->name = $request->input('name');
         if($store->hasFile('image')){
-            $image = $store->file('image')->store('public/stores');
-            $store->image = basename($image);
+           //$image = $store->file('image')->store('public/stores');
+           //$store->image = basename($image);
+            $imageName = time().'.'.$request->image->extension();
+            $image = $request->file('image')->move(public_path('images/stores'), $imageName);
+            $store->image = $imageName;
         }
         $store->description = $request->input('description');
         $store->business_hours = $request->input('business_hours');

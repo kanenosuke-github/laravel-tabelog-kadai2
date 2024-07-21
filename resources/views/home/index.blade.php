@@ -2,11 +2,10 @@
 
 @section('content')
 
-<h1>home</h1>
-<a href=""></a>
-<a href=""></a>
-<a href=""></a>
-<a href=""></a>
+<form action="{{route('home.result')}}" method="get">
+    <input type="text" name="keyword" >
+    <input type="submit" value="検索">
+</form>
 <table>
         <tr>
             <th>店舗コード</th>

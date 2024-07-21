@@ -15,6 +15,13 @@ class HomeController extends Controller
         return view('home.index',compact('stores'));
     }
 
+    public function result(Request $request)
+    {
+        //$request->input('keyword');
+        $stores = Store::all();
+        return view('home.index',compact('stores'));
+    }
+
     public function detail($id)
     {
         $store = Store::findOrFail($id);

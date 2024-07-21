@@ -13,6 +13,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,13 +31,15 @@ use App\Http\Controllers\FavoriteController;
 //});
 Route::group(['middleware' => 'guest:admin'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home/result', [App\Http\Controllers\HomeController::class, 'result'])->name('home.result');
     Route::get('/home/detail/{id}', [App\Http\Controllers\HomeController::class, 'detail'])->name('home.detail');
 
     
     Route::group(['middleware' => ['auth', 'verified']], function () {
         // 無料会員 or 無料会員が見られるルート
         Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
-
+        Route::get('/user/show',[UserController::class,'show'])->name('user.show');
+        Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
 
         Route::group(['middleware' => [NotSubscribed::class]], function () {
             Route::get('subscription/create', [SubscriptionController::class, 'create'])->name('subscription.create');
@@ -58,7 +61,12 @@ Route::group(['middleware' => 'guest:admin'], function () {
             Route::get('/stores/{store}/reservations/create', [ReservationController::class, 'create'])->name('user.reservations.create');
             Route::post('/stores/{store}/reservations', [ReservationController::class, 'store'])->name('user.reservations.store');
             Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('user.reservations.destroy');
-    });
+            //お気に入り
+            Route::post('favorites/{store}', [FavoriteController::class, 'store'])->name('favorites.store');
+            Route::delete('favorites/{store}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+            Route::post('user/favorites', [UserController::class, 'favorites'])->name('user.favorites');
+            
+        });
 
     });
 });
@@ -74,11 +82,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
     Route::resource('categories', CategoryController::class); // 新しいリソースルート
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::post('favorites/{store}', [FavoriteController::class, 'store'])->name('favorites.store');
-    Route::delete('favorites/{store}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
-    Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
-});
+
 
 
 // routes/web.php
