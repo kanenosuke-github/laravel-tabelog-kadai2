@@ -64,7 +64,7 @@ Route::group(['middleware' => 'guest:admin'], function () {
             //お気に入り
             Route::post('favorites/{store}', [FavoriteController::class, 'store'])->name('favorites.store');
             Route::delete('favorites/{store}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
-            Route::post('user/favorites', [UserController::class, 'favorites'])->name('user.favorites');
+            Route::get('user/favorites', [UserController::class, 'favorites'])->name('user.favorites');
             
         });
 

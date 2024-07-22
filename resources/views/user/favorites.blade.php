@@ -15,7 +15,7 @@
                             <button type="submit">お気に入り解除</button>
                         </form>
                     </li>
-                    @endforeach
+                  s  @endforeach
                 </ul>
                 {{ $favorites->links() }}
             </div>
