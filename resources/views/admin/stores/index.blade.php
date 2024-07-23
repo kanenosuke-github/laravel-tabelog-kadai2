@@ -4,6 +4,12 @@
 
 <a href="{{route('admin.stores.create')}}">Create New Store</a>
 
+<!-- Search Form -->
+<form action="{{ route('admin.stores.index') }}" method="GET">
+    <input type="text" name="search" placeholder="店舗検索" value="{{ request('search') }}">
+    <button type="submit">Search</button>
+</form>
+
 <table>
     <tr>
         <th>Name</th>
