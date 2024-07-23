@@ -22,7 +22,7 @@ class MemberController extends Controller
         return view('admin.members.index',compact('members'));
     }
 
-    public function show(Admin $member)
+    public function show(User $member)
     {
         return view('admin.members.show',compact('member'));
     }

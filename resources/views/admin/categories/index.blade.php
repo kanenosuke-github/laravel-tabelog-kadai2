@@ -16,7 +16,6 @@
         <td>{{$category->name}}</td>
         <td>
             <form action="{{route('admin.categories.destroy',$category->id)}}" method="POST">
-               <a href="{{route('admin.categories.show',$category->id)}}">Show</a>
                <a href="{{route('admin.categories.edit',$category->id)}}">Edit</a>
                 @csrf
                 @method('DELETE')
