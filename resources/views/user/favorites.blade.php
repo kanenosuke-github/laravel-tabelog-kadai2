@@ -8,14 +8,15 @@
                 <ul>
                     @foreach($favorites as $favorite)
                     <li>
-                        <a href="{{ route('store.show', $favorite->id) }}">{{ $favorite->name }}</a>
+                        <a href="{{ route('favorites.show', $favorite->id) }}">{{ $favorite->name }}</a>
                         <form action="{{ route('favorites.destroy', $favorite->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit">お気に入り解除</button>
                         </form>
+
                     </li>
-                  s  @endforeach
+                    @endforeach
                 </ul>
                 {{ $favorites->links() }}
             </div>

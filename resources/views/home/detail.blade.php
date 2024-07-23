@@ -12,7 +12,7 @@
     <a href="{{route('favorites.index')}}">お気に入り</a>
 
     @guest
-    
+        <!-- ゲストユーザーにはお気に入り操作を表示しない -->
     @else
         @if(Auth::user()->favorite_stores()->where('store_id',$store->id)->exists())
             <form action="{{ route('favorites.destroy', $store->id) }}" method="POST">

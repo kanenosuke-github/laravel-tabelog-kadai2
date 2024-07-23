@@ -66,7 +66,7 @@
 
                                 @if (Auth::user()->subscribed('premium_plan'))
                                     <a class="dropdown-item" href="{{route('user.reservations.index')}}">予約一覧</a>
-                                    <a class="dropdown-item" href="{{route('user.favorites')}}">お気に入り一覧</a>
+                                    <a class="dropdown-item" href="{{ route('favorites.index') }}">お気に入り一覧</a>
                                     <a class="dropdown-item" href="{{ route('subscription.edit') }}">お支払い方法</a>
                                     <a class="dropdown-item" href="{{ route('subscription.cancel') }}">有料プラン解約</a>
                                 @else

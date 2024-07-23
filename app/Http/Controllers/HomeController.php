@@ -17,8 +17,8 @@ class HomeController extends Controller
 
     public function result(Request $request)
     {
-        //$request->input('keyword');
-        $stores = Store::all();
+        $keyword = $request->input('keyword');
+        $stores = Store::where('name', 'like', '%' . $keyword . '%')->get();
         return view('home.index',compact('stores'));
     }
 

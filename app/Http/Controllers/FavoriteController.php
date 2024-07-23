@@ -25,6 +25,12 @@ class FavoriteController extends Controller
      public function index()
     {
         $favorites = Auth::user()->favorite_stores()->paginate(10);
-        return view('favorites.index', compact('favorites'));
+        return view('user/favorites', compact('favorites'));
+    }
+
+    public function show($store_id)
+    {
+    $store = Store::findOrFail($store_id);
+    return view('user.favoriteshow', compact('store'));
     }
 }
