@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>admin-login</title>
+
+    <style>
+        .nagoyameshi-btn {
+            background-color: #007bff; /* ブルー背景 */
+            color: white; /* 白いテキスト */
+        }
+        .nagoyameshi-btn:hover {
+            background-color: #0056b3; /* ホバー時の濃いブルー */
+        }
+    </style>
+    
 </head>
 <body>
     
@@ -12,7 +23,7 @@
     <div class="container my-4 nagoyameshi-container">
         <div class="row justify-content-center">
             <div class="col-xl-3 col-lg-4 col-md-5 col-sm-7">
-                <h1 class="mb-4 text-center">ログイン</h1>
+                <h1 class="mb-4 text-center">管理者ログイン</h1>
 
                 <hr class="mb-4">
 
