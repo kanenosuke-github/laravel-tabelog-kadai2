@@ -23,10 +23,11 @@ class StoreController extends Controller
                   ->orWhere('address', 'like', "%{$search}%");
         }
 
-        $stores = $query->get();
+        $stores = $query->paginate(10);
         return view('admin.stores.index',compact('stores'));
     }
 
+   
     /**
      * Show the form for creating a new resource.
      */

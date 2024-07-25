@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index() {
-        $categories = Category::all();
+        $categories = Category::paginate(10);
         return view('admin.categories.index',compact('categories'));
     }
 
@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:categories,name',
         ]);
 
         Category::create([
@@ -36,7 +36,7 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category) {
         $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:categories,name,' . $category->id,
         ]);
 
         $category->update([

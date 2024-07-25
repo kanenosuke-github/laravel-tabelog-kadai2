@@ -49,4 +49,6 @@
     @endforeach
 </table>
 
+{{$stores->links()}}
+
 @endsection
