@@ -1,38 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto px-4">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col">
-                <h1 class="text-2xl font-bold mb-4">カテゴリー一覧</h1>
-                <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">Create New Category</a>
-
+            <div class="col-md-8">
+                <h1 class="text-center mb-4">カテゴリー一覧</h1>
+                <div class="text-right mb-3">
+                    <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">カテゴリー作成</a>
+                </div>
 
                 <!-- 検索フォームの追加 -->
-                <form action="{{ route('admin.categories.index') }}" method="GET" class="mt-4 mb-4">
-                <input type="text" name="search" placeholder="Search Categories" class="form-control d-inline-block w-auto mr-2">
-                <button type="submit" class="btn btn-primary">Search</button>
-
-
+                <form action="{{ route('admin.categories.index') }}" method="GET" class="form-inline mb-4">
+                    <input type="text" name="search" placeholder="カテゴリー検索" class="form-control mr-2">
+                    <button type="submit" class="btn btn-primary">検索</button>
                 </form>
 
-                <table class="w-full mt-4 border-collapse">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th class="border-b py-2">Name</th>
-                            <th class="border-b py-2">Actions</th>
+                            <th>カテゴリー名</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($categories as $category)
                         <tr>
-                            <td class="border-b py-2">{{ $category->name }}</td>
-                            <td class="border-b py-2">
-                                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" class="inline-block">
-                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="text-blue-500">Edit</a>
+                            <td>{{ $category->name }}</td>
+                            <td>
+                                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" class="d-inline">
+                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-info btn-sm">編集</a>
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-500 ml-2">DELETE</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">削除</button>
                                 </form>
                             </td>
                         </tr>
@@ -41,10 +40,9 @@
                 </table>
 
                 <!-- ページネーションリンクをここに追加 -->
-                <div class="mt-4 pagination-custom">
+                <div class="mt-4">
                     {{ $categories->links() }}
                 </div>
-               
             </div>
         </div>
     </div>

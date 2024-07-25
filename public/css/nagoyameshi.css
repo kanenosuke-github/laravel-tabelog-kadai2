@@ -380,3 +380,21 @@ footer {
     display: none;
   }
 }
+
+.custom-footer {
+  padding-top: 5px; /* フッターの上部の余白を調整 */
+  padding-bottom: 5px; /* フッターの下部の余白を調整 */
+  height: auto; /* 高さを自動調整 */
+}
+
+.nagoyameshi-footer-logo {
+  margin-bottom: 10px; /* ロゴ周りの余白の調整 */
+}
+
+.nagoyameshi-footer-link {
+  margin-bottom: 10px; /* リンク周りの余白の調整 */
+}
+
+.text-center.text-muted.small {
+  margin-bottom: 0; /* フッター内のテキストの下部の余白を削減 */
+}

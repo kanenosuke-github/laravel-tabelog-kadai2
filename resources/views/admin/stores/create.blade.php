@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <div>
     <h2>Add New Store</h2>
 </div>
@@ -66,3 +70,5 @@
         <button type="submit">Submit</button>
     </div>
 </form>
+
+@endsection
