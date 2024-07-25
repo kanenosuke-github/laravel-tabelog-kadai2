@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ページネーションの矢印アイコンとリンクをスタイル */
+.pagination .page-link {
+    font-size: 1rem;  /* ここでフォントサイズを調整します */
+    padding: 0.5rem 1rem;  /* パディングを適切に設定 */
+    color: #000; /* 矢印やリンクの色を設定 */
+}
+
+/* ページネーション全体のスタイル */
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+/* 矢印のアイコンのカスタマイズ */
+.pagination-arrow svg {
+    width: 1.5rem;  /* アイコンの幅を調整 */
+    height: 1.5rem; /* アイコンの高さを調整 */
+}

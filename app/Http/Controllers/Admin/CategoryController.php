@@ -8,8 +8,16 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index() {
-        $categories = Category::paginate(10);
+    public function index(Request $request) {
+        $query = Category::query();
+
+        // 検索クエリがある場合にフィルタリング
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('name', 'LIKE', "%{$search}%");
+        }
+
+        $categories = $query->paginate(10);
         return view('admin.categories.index',compact('categories'));
     }
 
