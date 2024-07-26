@@ -35,15 +35,15 @@
             <table class="table table-bordered table-hover mb-5">
                 <thead>
                     <tr>
-                        <th>Image</th>
-                        <th>Description</th>
-                        <th>Business Hours</th>
-                        <th>Price</th>
-                        <th>Category ID</th>
-                        <th>Postal Code</th>
-                        <th>Address</th>
-                        <th>Phone Number</th>
-                        <th>Regular Holiday</th>
+                        <th>店舗画像</th>
+                        <th>店舗説明</th>
+                        <th>営業時間</th>
+                        <th>価格</th>
+                        <th>カテゴリ ID</th>
+                        <th>郵便番号</th>
+                        <th>住所</th>
+                        <th>電話番号</th>
+                        <th>定休日</th>
                     </tr>
                 </thead>
                 <tbody>

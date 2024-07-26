@@ -17,7 +17,7 @@
                             <th>店舗名</th>
                             <th>カテゴリ</th>
                             <th>住所</th>
-                            <th>操作</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
