@@ -33,7 +33,7 @@
                     <tr>
                         <td>{{$store->id}}</td>
                         <td>{{$store->name}}</td>
-                        <td>{{$store->category}}</td>
+                        <td>{{$store->category->name}}</td>
                         <td>{{$store->address}}</td>
                         <td><a href="{{route('home.detail', $store->id)}}" class="btn btn-info">店舗詳細</a></td>
                     </tr>

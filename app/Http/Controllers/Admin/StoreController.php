@@ -45,7 +45,7 @@ class StoreController extends Controller
     {
         $request->validate([
         'name' => 'required|string|max:255',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
         'description' => 'nullable|string',
         'business_hours' => 'nullable|string',
         'price' => 'nullable|numeric',
