@@ -8,6 +8,12 @@
                 <div class="card-header">会員情報</div>
 
                 <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
                     <table class="table">
                         <tr>
                             <th>名前:</th>
@@ -22,9 +28,13 @@
                             <td>{{ Auth::user()->created_at->format('Y-m-d') }}</td>
                         </tr>
                     </table>
+
+                    <a href="{{ route('user.edit') }}" class="btn btn-primary">編集</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+                

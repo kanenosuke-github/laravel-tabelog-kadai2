@@ -66,6 +66,10 @@ Route::group(['middleware' => 'guest:admin'], function () {
             Route::delete('favorites/{store}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
             Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
             Route::get('favorites/{store}', [FavoriteController::class, 'show'])->name('favorites.show'); 
+            // ユーザー情報表示と編集用のルート設定
+            Route::get('/user/show', [UserController::class, 'show'])->name('user.show');
+            Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
+            Route::patch('/user/update', [UserController::class, 'update'])->name('user.update');
 
         });
 
