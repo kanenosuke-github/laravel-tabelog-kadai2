@@ -21,28 +21,34 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>店舗コード</th>
+                        <th>店舗画像</th>
                         <th>店舗名</th>
                         <th>カテゴリ</th>
                         <th>住所</th>
-                        <th>操作</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($stores as $store)
                     <tr>
-                        <td>{{$store->id}}</td>
-                        <td>{{$store->name}}</td>
+                        <td>
+                            <!-- 画像表示 -->
+                            <img src="{{ asset('images/stores/' . $store->image) }}" alt="{{ $store->name }}" width="100px">
+                        </td>
+                        <td class="fw-bold text-danger">{{$store->name}}</td>
                         <td>{{$store->category->name}}</td>
                         <td>{{$store->address}}</td>
-                        <td><a href="{{route('home.detail', $store->id)}}" class="btn btn-info">店舗詳細</a></td>
+                        <td>
+                            <a href="{{route('home.detail', $store->id)}}" class="btn btn-info">店舗詳細</a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
 
 @endsection
+
+                        

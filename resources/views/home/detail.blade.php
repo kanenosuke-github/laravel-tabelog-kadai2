@@ -12,7 +12,7 @@
             </div>
 
             <h1 class="mb-4">店舗詳細</h1>
-            <h3>{{$store->name}}</h3>
+            <h3 class="fw-bold text-danger">{{$store->name}}</h3>
             <img src="{{asset('images/stores/'.$store->image)}}" alt="" width="100px" class="mb-4">
 
             @guest
@@ -35,11 +35,10 @@
             <table class="table table-bordered table-hover mb-5">
                 <thead>
                     <tr>
-                        <th>店舗画像</th>
                         <th>店舗説明</th>
                         <th>営業時間</th>
                         <th>価格</th>
-                        <th>カテゴリ ID</th>
+                        <th>カテゴリ</th>
                         <th>郵便番号</th>
                         <th>住所</th>
                         <th>電話番号</th>
@@ -48,11 +47,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><img src="{{$store->image}}" alt="{{$store->name}}" width="100px"></td>
                         <td>{{$store->description}}</td>
                         <td>{{$store->business_hours}}</td>
                         <td>{{$store->price}}</td>
-                        <td>{{$store->category_id}}</td>
+                        <td>{{$store->category->name}}</td>
                         <td>{{$store->postal_code}}</td>
                         <td>{{$store->address}}</td>
                         <td>{{$store->phone_number}}</td>
