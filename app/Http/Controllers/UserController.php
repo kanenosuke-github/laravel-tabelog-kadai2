@@ -24,11 +24,11 @@ class UserController extends Controller
         
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
         $user->save();
 
         return redirect()->route('user.show')->with('status', '会員情報が更新されました');

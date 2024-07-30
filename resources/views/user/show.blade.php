@@ -24,8 +24,16 @@
                             <td>{{ Auth::user()->email }}</td>
                         </tr>
                         <tr>
+                            <th>パスワード:</th>
+                            <td>セキュリティのため表示されません</td>
+                        </tr>
+                        <tr>
                             <th>登録日:</th>
                             <td>{{ Auth::user()->created_at->format('Y-m-d') }}</td>
+                        </tr>
+                        <tr>
+                            <th>更新日:</th>
+                            <td>{{ Auth::user()->updated_at->format('Y-m-d') }}</td>
                         </tr>
                     </table>
 

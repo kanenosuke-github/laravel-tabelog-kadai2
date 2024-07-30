@@ -18,8 +18,13 @@
                         </div>
                         
                         <div class="form-group mb-3">
-                            <label for="email">メールアドレス</label>
-                            <input type="email" name="email" id="email" class="form-control" value="{{ Auth::user()->email }}">
+                            <label for="password">パスワード</label>
+                            <input type="password" name="password" id="password" class="form-control">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="password_confirmation">パスワード再入力</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
                         </div>
                         
                         <button type="submit" class="btn btn-primary">更新</button>
