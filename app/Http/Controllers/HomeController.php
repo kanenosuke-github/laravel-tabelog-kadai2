@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $stores = Store::with('category')->get();
+        $stores = Store::with('category')->paginate(10);
         $categories = Category::all();
         return view('home.index',compact('stores', 'categories'));
     }
@@ -31,7 +31,7 @@ class HomeController extends Controller
         if ($category_id) {
             $query->where('category_id', $category_id);
         }
-        $stores = $query->with('category')->get();
+        $stores = $query->with('category')->paginate(10);
         $categories = Category::all();
 
         return view('home.index',compact('stores', 'categories'));

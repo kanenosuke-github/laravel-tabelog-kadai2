@@ -45,6 +45,11 @@
                     @endforeach
                 </tbody>
             </table>
+
+             <!-- ページネーションリンクの追加 -->
+             <div class="mt-4">
+                    {{ $stores->links() }}
+                </div>
         </div>
     </div>
 </div>
