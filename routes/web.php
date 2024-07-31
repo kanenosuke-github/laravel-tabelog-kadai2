@@ -56,6 +56,15 @@ Route::group(['middleware' => 'guest:admin'], function () {
             // レビュー投稿フォーム表示とレビュー保存のルート設定
             Route::get('/store/{id}/review', [ReviewController::class, 'create'])->name('home.review.create');
             Route::post('/store/{id}/review', [ReviewController::class, 'store'])->name('home.review.store');
+            // web.php
+
+            // 編集と更新のルート
+            Route::get('/store/{storeId}/review/{reviewId}/edit', [ReviewController::class, 'edit'])->name('home.review.edit');
+            Route::put('/store/{storeId}/review/{reviewId}', [ReviewController::class, 'update'])->name('home.review.update');
+
+            // 削除のルート
+            Route::delete('/store/{storeId}/review/{reviewId}', [ReviewController::class, 'destroy'])->name('home.review.destroy');
+
             //予約
             Route::get('/reservations', [ReservationController::class, 'index'])->name('user.reservations.index');
             Route::get('/stores/{store}/reservations/create', [ReservationController::class, 'create'])->name('user.reservations.create');

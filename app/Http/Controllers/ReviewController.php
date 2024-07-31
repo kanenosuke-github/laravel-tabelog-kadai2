@@ -49,24 +49,38 @@ class ReviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($storeId, $reviewId)
     {
-        //
+        $review = Review::findOrFail($reviewId);
+        return view('home.edit_review', compact('review', 'storeId'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $storeId, $reviewId)
     {
-        //
+        $request->validate([
+            'comment' => 'required|string',
+        ]);
+
+        $review = Review::findOrFail($reviewId);
+        $review->comment = $request->comment;
+        $review->save();
+
+        return redirect()->route('home.detail', ['id' => $storeId]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($storeId, $reviewId)
     {
-        //
+        $review = Review::findOrFail($reviewId);
+        if ($review->user_id === auth()->id()) {
+            $review->delete();
+        }
+
+        return redirect()->route('home.detail', ['id' => $storeId]);
     }
 }

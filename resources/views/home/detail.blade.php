@@ -65,6 +65,14 @@
                 <li class="border-bottom mb-2 pb-2">
                     <p><strong>{{$review->user_name}}</strong></p>
                     <p>{{$review->comment}}</p>
+                    @if(Auth::id() == $review->user_id)
+                    <a href="{{ route('home.review.edit', ['storeId' => $store->id, 'reviewId' => $review->id]) }}" class="btn btn-warning btn-sm">編集</a>
+                    <form action="{{ route('home.review.destroy', ['storeId' => $store->id, 'reviewId' => $review->id]) }}" method="POST" class="d-inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">削除</button>
+                    </form>
+                    @endif
                 </li>
                 @endforeach
 
