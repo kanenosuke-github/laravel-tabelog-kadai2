@@ -47,12 +47,12 @@ class StoreController extends Controller
         'name' => 'required|string|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
         'description' => 'nullable|string',
-        'business_hours' => 'nullable|string',
+        'business_hours' => 'required|string',
         'price' => 'nullable|numeric',
         'postal_code' => 'required|string|max:20',
         'address' => 'required|string|max:255',
         'phone_number' => 'required|string|max:20',
-        'regular_holiday' => 'nullable|string|max:100',
+        'regular_holiday' => 'requied|string',
         'category_id' => 'required|exists:categories,id',
     ]);
 
@@ -107,12 +107,12 @@ class StoreController extends Controller
         'name' => 'required|string|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'description' => 'nullable|string',
-        'business_hours' => 'nullable|string',
+        'business_hours' => 'required|string',
         'price' => 'nullable|numeric',
         'postal_code' => 'required|string|max:20',
         'address' => 'required|string|max:255',
         'phone_number' => 'required|string|max:20',
-        'regular_holiday' => 'nullable|string|max:100',
+        'regular_holiday' => 'required|string',
         'category_id' => 'required|exists:categories,id',
     ]);
     

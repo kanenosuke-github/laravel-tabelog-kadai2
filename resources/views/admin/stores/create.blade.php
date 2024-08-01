@@ -37,6 +37,7 @@
     <div>
         <strong>Business Hours:</strong>
         <input type="text" name="business_hours" placeholder="Business Hours">
+        <small>例: 09:00-18:00</small>
     </div>
     <div>
         <strong>Price:</strong>
@@ -57,6 +58,7 @@
     <div>
         <strong>Regular Holiday:</strong>
         <input type="text" name="regular_holiday" placeholder="Regular Holiday">
+        <small>例: 水曜日</small>
     </div>
     <div>
         <strong>Category:</strong>
