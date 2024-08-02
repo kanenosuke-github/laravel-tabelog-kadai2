@@ -3,10 +3,10 @@
 @section('content')
 
 <div>
-    <h2>Add New Store</h2>
+    <h2>新規店舗追加</h2>
 </div>
 <div>
-    <a href="{{route('admin.stores.index')}}">Back</a>
+    <a href="{{route('admin.stores.index')}}">戻るk</a>
 </div>
 
 @if ($errors->any())
@@ -23,42 +23,48 @@
     @csrf
 
     <div>
-        <strong>Name:</strong>
-        <input type="text" name="name" placeholder="Name">
+        <strong>店舗名:</strong>
+        <input type="text" name="name" placeholder="店舗名">
     </div>
     <div>
-        <strong>Image:</strong>
-        <input type="file" name="image" placeholder="Image">
+        <strong>店舗画像:</strong>
+        <input type="file" name="image" placeholder="店舗画像">
     </div>
     <div>
-        <strong>Description:</strong>
-        <textarea name="description" placeholder="Description"></textarea>
+        <strong>店舗詳細:</strong>
+        <textarea name="description" placeholder="店舗詳細"></textarea>
     </div>
     <div>
-        <strong>Business Hours:</strong>
-        <input type="text" name="business_hours" placeholder="Business Hours">
-        <small>例: 09:00-18:00</small>
+        <strong>営業時間:</strong>
+        <input type="text" name="business_hours" placeholder="営業時間" pattern="^(\d{2}:\d{2}-\d{2}:\d{2}|24時間)$" required>
+        <small>例: 09:00-18:00 or 24時間</small>
     </div>
     <div>
-        <strong>Price:</strong>
-        <input type="number" name="price" placeholder="Price">
+        <strong>価格:</strong>
+        <input type="number" name="price" placeholder="価格">
     </div>
     <div>
-        <strong>Postal Code:</strong>
-        <input type="text" name="postal_code" placeholder="Postal Code">
+        <strong>郵便番号:</strong>
+        <input type="text" name="postal_code" placeholder="郵便番号">
     </div>
     <div>
-        <strong>Address:</strong>
-        <input type="text" name="address" placeholder="Address">
+        <strong>住所:</strong>
+        <input type="text" name="address" placeholder="住所">
     </div>
     <div>
-        <strong>Phone Number:</strong>
-        <input type="tel" name="phone_number" placeholder="Phone Number">
+        <strong>電話番号:</strong>
+        <input type="tel" name="phone_number" placeholder="電話番号">
     </div>
     <div>
-        <strong>Regular Holiday:</strong>
-        <input type="text" name="regular_holiday" placeholder="Regular Holiday">
-        <small>例: 水曜日</small>
+    <strong>定休日:</strong><br>
+        <input type="checkbox" name="regular_holiday[]" value="Monday"> 月曜日<br>
+        <input type="checkbox" name="regular_holiday[]" value="Tuesday"> 火曜日<br>
+        <input type="checkbox" name="regular_holiday[]" value="Wednesday"> 水曜日<br>
+        <input type="checkbox" name="regular_holiday[]" value="Thursday"> 木曜日<br>
+        <input type="checkbox" name="regular_holiday[]" value="Friday"> 金曜日<br>
+        <input type="checkbox" name="regular_holiday[]" value="Saturday"> 土曜日<br>
+        <input type="checkbox" name="regular_holiday[]" value="Sunday"> 日曜日<br>
+        <input type="checkbox" name="regular_holiday[]" value="None"> 年中無休<br>
     </div>
     <div>
         <strong>Category:</strong>

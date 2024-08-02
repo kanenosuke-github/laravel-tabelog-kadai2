@@ -52,7 +52,7 @@ class StoreController extends Controller
         'postal_code' => 'required|string|max:20',
         'address' => 'required|string|max:255',
         'phone_number' => 'required|string|max:20',
-        'regular_holiday' => 'requied|string',
+        'regular_holiday' => 'required|string',
         'category_id' => 'required|exists:categories,id',
     ]);
 
