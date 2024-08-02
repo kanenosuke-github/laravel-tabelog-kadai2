@@ -44,7 +44,23 @@
             </tr>
             <tr>
                 <th>定休日</th>
-                <td>{{$store->regular_holiday}}</td>
+                @php
+                    $days = [
+                        'Monday' => '月曜日',
+                        'Tuesday' => '火曜日',
+                        'Wednesday' => '水曜日',
+                        'Thursday' => '木曜日',
+                        'Friday' => '金曜日',
+                        'Saturday' => '土曜日',
+                        'Sunday' => '日曜日',
+                        'None' => '年中無休'
+                    ];
+                    $regular_holiday = is_array($store->regular_holiday) ? $store->regular_holiday : explode(',', $store->regular_holiday);
+                    $japanese_holidays = array_map(function($day) use ($days) {
+                        return $days[$day] ?? $day;
+                    }, $regular_holiday);
+                @endphp
+                <td>{{ implode('、', $japanese_holidays) }}</td>
             </tr>
         </tbody>
     </table>

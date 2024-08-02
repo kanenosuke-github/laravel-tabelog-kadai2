@@ -54,7 +54,7 @@
                         <td>{{$store->postal_code}}</td>
                         <td>{{$store->address}}</td>
                         <td>{{$store->phone_number}}</td>
-                        <td>{{$store->regular_holiday}}</td>
+                        <td>{{ $store->regular_holiday_jp }}</td>
                     </tr>
                 </tbody>
             </table>

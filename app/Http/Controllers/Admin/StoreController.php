@@ -52,7 +52,7 @@ class StoreController extends Controller
         'postal_code' => 'required|string|max:20',
         'address' => 'required|string|max:255',
         'phone_number' => 'required|string|max:20',
-        'regular_holiday' => 'required|string',
+        'regular_holiday' => 'required|array',
         'category_id' => 'required|exists:categories,id',
     ]);
 
@@ -73,7 +73,7 @@ class StoreController extends Controller
         $store->postal_code = $request->input('postal_code');
         $store->address = $request->input('address');
         $store->phone_number = $request->input('phone_number');
-        $store->regular_holiday = $request->input('regular_holiday');
+        $store->regular_holiday = implode(',', $request->input('regular_holiday'));
         $store->category_id = $request->input('category_id');
         $store->save();
 
@@ -85,18 +85,62 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
+        $dayMapper = [
+            'Monday' => '月曜日',
+            'Tuesday' => '火曜日',
+            'Wednesday' => '水曜日',
+            'Thursday' => '木曜日',
+            'Friday' => '金曜日',
+            'Saturday' => '土曜日',
+            'Sunday' => '日曜日',
+            'None' => '年中無休'
+        ];
+
+        $regular_holidays = is_array($store->regular_holiday) ? $store->regular_holiday : explode(',', $store->regular_holiday);
+        $store->regular_holiday_jp = array_map(function($day) use ($dayMapper) {
+            return $dayMapper[$day] ?? $day;
+        }, $regular_holidays);
+
         return view('admin.stores.show',compact('store'));
     }
+
+    # これはユーザー側の詳細表示用コントローラで行うべき修正となります。
+public function showUserStore(Store $store)
+{
+    $dayMapper = [
+        'Monday' => '月曜日',
+        'Tuesday' => '火曜日',
+        'Wednesday' => '水曜日',
+        'Thursday' => '木曜日',
+        'Friday' => '金曜日',
+        'Saturday' => '土曜日',
+        'Sunday' => '日曜日',
+        'None' => '年中無休'
+    ];
+
+    $regular_holidays = is_array($store->regular_holiday) ? $store->regular_holiday : explode(',', $store->regular_holiday);
+    $store->regular_holiday_jp = array_map(function($day) use ($dayMapper) {
+        return $dayMapper[$day] ?? $day;
+    }, $regular_holidays);
+
+    return view('home.detail', compact('store', 'reviews'));
+}
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Store $store)
-    {
-        $categories = Category::all();
-
-        return view('admin.stores.edit',compact('store','categories'));
+{
+    $categories = Category::all();
+    if (is_string($store->regular_holiday)) {
+        $store->regular_holiday = explode(',', $store->regular_holiday);
+    } elseif (is_null($store->regular_holiday)) {
+        $store->regular_holiday = [];
     }
+    return view('admin.stores.edit', compact('store', 'categories'));
+}
+
 
     /**
      * Update the specified resource in storage.
@@ -112,7 +156,7 @@ class StoreController extends Controller
         'postal_code' => 'required|string|max:20',
         'address' => 'required|string|max:255',
         'phone_number' => 'required|string|max:20',
-        'regular_holiday' => 'required|string',
+        'regular_holiday' => 'required|array',
         'category_id' => 'required|exists:categories,id',
     ]);
     
@@ -131,7 +175,7 @@ class StoreController extends Controller
     $store->postal_code = $request->input('postal_code');
     $store->address = $request->input('address');
     $store->phone_number = $request->input('phone_number');
-    $store->regular_holiday = $request->input('regular_holiday');
+    $store->regular_holiday = implode(',', $request->input('regular_holiday'));
     $store->category_id = $request->input('category_id');
     $store->save(); // ここをupdateからsaveに変更
 
